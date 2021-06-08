@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mysql:
+    restart: always
+    image: mysql:5.7.16
+    container_name: my_mysql
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./conf/my.cnf:/etc/my.cnf
+      - /docker/mysql/source:/docker-entrypoint-initdb.d
+    environment:
+      - "MYSQL_ROOT_PASSWORD=Fsh_2021"
+      - "MYSQL_DATABASE=airflow"
+      - "TZ=Asia/Shanghai"
+    ports:
+      - 3306:3306
+
